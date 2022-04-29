@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<link rel="stylesheet" 
+			href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.1.3/css/bootstrap.min.css" 
+			integrity="sha512-GQGU0fMMi238uA+a/bdWJfpUGKUkBdgfFdgBm72SUQ6BeyWjoY/ton0tEjH+OSH9iP4Dfh+7HM0I9f5eR0L/4w==" 
+			crossorigin="anonymous" referrerpolicy="no-referrer" />
+        <title>Weather</title>
+    </head>
+    <body>
+
+        <div class="container">
+            <div class="row mt-5">
+                <div class="col d-flex flex-row align-items-center">
+                    <div class="me-2">
+                        <img data-th-src="@{https://countryflagsapi.com/png/{country}(country=${result.country})}" 
+                                class="img-thumbnail" style="height: 3em; width: auto;">
+                    </div>
+                    <h1 data-th-text="${result.cityName}"></h1>
+                </div>
+            </div>
+
+            <div class="row mt-3">
+                <div class="col">
+                    Temperature: <span data-th-text="${result.temperature}"></span>
+                </div>
+            </div>
+
+            <table class="table table-hover mt-4">
+                <tr data-th-each="desc: ${result.descriptions}">
+                    <td class="d-flex align-items-center">
+                        <div>
+                            <img data-th-src="@{http://openweathermap.org/img/wn/{icon}@2x.png(icon=${desc.icon})}" 
+                                    class="figure-img img-fluid border border-secondary rounded">
+                        </div>
+                    </td>
+                    <td class="align-middle">
+                        <span class="fs-3" data-th-text="|${desc.main} ${desc.description}|"></span>
+                    </td>
+                </tr>
+
+            </table>
+
+            <div class="row">
+                <div class="col d-flex justify-content-end">
+                    <a href="/" class="btn btn-primary btn-lg">Back</a>
+                </div>
+            </div>
+        </div>
+        
+    </body>
+</html>
