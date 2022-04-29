@@ -24,7 +24,7 @@ jobs:
         distribution: 'temurin'
 
     - name: Setup maven
-    - uses: stCarolas/setup-maven@v4.3
+      uses: stCarolas/setup-maven@v4.3
       with: 
         maven-version: 3.8.2
 
@@ -35,7 +35,7 @@ jobs:
       run: mvn clean test
 
     - name: Deploy to Heroku 
-    - uses: akhileshns/heroku-deploy@v3.12.12
+      uses: akhileshns/heroku-deploy@v3.12.12
       with:
         heroku_api_key: ${{secrets.heroku_key}}
         heroku_app_name: ${{secrets.heroku_app_name}}
